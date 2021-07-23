@@ -11,13 +11,24 @@
 
   <body>
     <header>
-      
+      <% if user_signed_in? %>
+      <li><%= link_to "Home", user_path(current_user.id) %></li>
+      <li><%= link_to "Users", users_path %></li>
+      <li><%= link_to "Books", books_path %></li>
+      <li><%= link_to "logout", destroy_user_session_path %></li>
+      <% else %>
+      <li><%= link_to "Home", users_path %></li>
+      <li><%= link_to "about", home_about_path %></li>
+      <li><%= link_to "sign_up", new_user_registration_path %></li>
+      <li><%= link_to "sign_in", new_user_session_path %></li>
+      <% end %>
+
     </header>
     <main>
-      
+
     </main>
     <footer>
-      
+
     </footer>
     <%= yield %>
   </body>
